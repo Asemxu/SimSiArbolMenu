@@ -8,9 +8,11 @@ public:
 	const static  int busqueda_profundidad_arbol=3;
 	const static  int busqueda_anchura_arbol=4;
 	const static int busqueda_costo_arbol=5;
-	const static int salir=6;
+	const static int eliminar_arbol_actual =6;
+	const static int salir=7;
 	const static void mostrar_opciones_menu();
 	void static MostrarOpcionesListaMenu();
+	bool static TieneHijos();
 private:
 };
 }

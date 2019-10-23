@@ -1,11 +1,22 @@
 #include "MenuGestionArboles.h"
 #include "MenuConstantesGestionArboles.h"
 #include <windows.h>
+#include "Nodo.h"
+#include <cstdlib>
+#include <cstddef>
+using namespace std;
 using namespace Menu_constantes;
 using namespace Menu;
+using namespace Espacio_Nodo;
 int mostrarOpciones();
+int PreguntarCantidad();
 void evaluaropcionseleccionada(int);
+void InsertarNodoInicio(Nodo *&);
+Nodo * crearNodo(string);
+void InsertarNodo(Nodo *&);
+bool TieneHijos();
 
+Nodo * arbol=NULL;
 void MenuGestionArboles::empezarMenu() {
 	int opcionseleccionada;
 	do{
@@ -25,10 +36,23 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 	switch(opcionseleccionada){
 		case MenuConstantesGestionArboles::insertar_arbol:{
 			cout<<"..::Ingrese Arbol a Insertar::"<<endl;
+			if(arbol==NULL){
+				InsertarNodoInicio(arbol);
+				while(MenuConstantesGestionArboles::TieneHijos()){
+					cout<<"Cantidad de Hijos que tendra el nodo "<<arbol->get_Data();
+					int numero;
+					cin>>numero;
+					//InsertarNodo(arbol);
+				}
+			}
 			break;
 		}
 		case MenuConstantesGestionArboles::mostrar_arbol:{
 			cout<<"..::Mostrar Arbol::.."<<endl;
+			if(arbol==NULL)
+				cout<<"El Arbol Esta Vacio porfavor Ingrese Uno "<<endl;
+			else
+				cout<<arbol->get_Data()<<endl;
 			break;
 		}
 		case MenuConstantesGestionArboles::busqueda_profundidad_arbol:{
@@ -43,12 +67,33 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 				cout<<"..::Busqueda por Costos::.."<<endl;
 				break;
 			}
+	case MenuConstantesGestionArboles::eliminar_arbol_actual:{
+			cout<<"..:Vaciando Arbol::.."<<endl;
+			arbol = NULL;
+			break;
+			}
 		case MenuConstantesGestionArboles::salir:{
 				cout<<"Salio"<<endl;
 				exit(0);
 			}
 	}
+	system("PAUSE");
 	Sleep(2000);
 }
-	
+void InsertarNodo(Nodo *&arbol){
+	//arbol->set_n_costos_hijos(numero);
+}
+Nodo * crearNodo(string dato){
+	Nodo * nuevo_nodo = new Nodo();
+	nuevo_nodo->set_data(dato);
+	return nuevo_nodo;
+}
+void InsertarNodoInicio(Nodo  *&){
+	cout<<"Ingrese nombre del Nodo Inicial: ";
+	string nombre;
+	cin>>nombre;
+	Nodo * nuevo_nodo =crearNodo(nombre);
+	arbol = nuevo_nodo;
+}
+
 

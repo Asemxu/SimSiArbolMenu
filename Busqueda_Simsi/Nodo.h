@@ -9,20 +9,20 @@ class Nodo {
 public:
 	string Data;
 	int *costos;
-	int n_costos;
+	int n_hijos;
 	Nodo ** hijos;
-	Nodo(int  cantidad){
-		n_costos=cantidad;
-		costos= new int[cantidad];
-		hijos = new Nodo*[cantidad];
+	Nodo(){
+		
 	}
+	
 	void set_data(string);
 	void setcostos_hijos(int );
-	void set_n_costos(int); 
-	int get_cantidad_costos();
+	void set_n_costos_hijos(int); 
+	int get_cantidad_costos_hijos();
 	void mostrar_costos();
 	void set_Hijos();
 	void get_Hijos();
+	string get_Data(); 
 	~Nodo();	
 };
 }
