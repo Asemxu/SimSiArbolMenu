@@ -1,0 +1,76 @@
+        -:    0:Source:C:/Users/hijo7/projects/Busqueda/Busqueda_Simsi/Nodo.cpp
+        -:    0:Graph:Nodo.gcno
+        -:    0:Data:Nodo.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#include "Nodo.h"
+        -:    2:#include <iostream>
+        -:    3:#include <cstring>
+        -:    4:#include <bits/stdc++.h> 
+        -:    5:#include <string>
+        -:    6:using namespace std;
+        -:    7:using namespace Espacio_Nodo;
+    #####:    8:Nodo::~Nodo(){
+    #####:    9:} 
+        -:   10:void LLenandoHijos(Nodo &);
+        4:   11:void Nodo::set_data(string dato){
+        4:   12:	this->Data=dato;
+        -:   13:	
+        4:   14:}
+        6:   15:string Nodo::get_Data(){
+        6:   16:	return this->Data;
+        -:   17:}
+    #####:   18:void Nodo::ingresarcostos_hijos(int n){
+    #####:   19:		cout<<"Ingrese Costo del Nodo °"<<this->Data<<" : ";
+    #####:   20:		cin>>costo;
+    #####:   21:}
+        2:   22:void Nodo::set_n_hijos(int cantidad_hijos){
+        2:   23:	n_hijos=cantidad_hijos;
+        2:   24:	hijos = new Nodo[n_hijos];
+        2:   25:}
+    #####:   26:int Nodo::get_cantidad_hijos(){
+    #####:   27:	return this->n_hijos;
+        -:   28:}
+    #####:   29:int Nodo::mostrar_costos(){
+    #####:   30:	return this->costo;
+        -:   31:}
+        2:   32:void Nodo::set_Hijos(Nodo *& arbol){
+        2:   33:	bool estado=false;
+        3:   34:	for(int i=0;i<n_hijos;i++){
+        3:   35:		for(int j=i;j<n_hijos;j++)
+        -:   36:		{
+        4:   37:			string palabra = "";
+        2:   38:			if(!estado)
+        2:   39:				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->get_Data()<<": ";
+        -:   40:			else
+    #####:   41:				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->hijos[j].get_Data()<<": ";
+        2:   42:			cin>>palabra;
+        2:   43:			arbol->hijos[j].set_data(palabra);
+        -:   44:			
+        -:   45:		}
+        1:   46:		estado=true;
+        3:   47:		for(int k=0;k<n_hijos;k++){
+        2:   48:			if(arbol->hijos[k].cuantos_hijos(arbol->hijos[k].get_Data())==0){
+        2:   49:				i++;
+        -:   50:			}
+        -:   51:		}
+        1:   52:		continue;
+        -:   53:		
+        -:   54:	
+        -:   55:	}
+        2:   56:}
+    #####:   57:void LLenandoHijos(Nodo & hijo){
+    #####:   58:	cout<<hijo.get_Data()<<endl;
+    #####:   59:}
+        1:   60:void Nodo::get_Hijos(){
+        1:   61:	cout<<"Nodo "<<this->Data<<endl;
+        1:   62:	for(int i=0;i<n_hijos;i++){
+        -:   63:		
+        -:   64:	}
+        1:   65:}
+        4:   66:int Nodo::cuantos_hijos(string nombre_nodo){
+        4:   67:	cout<<"Cuantos hijos tiene el nodo "<<nombre_nodo<<": ";
+        -:   68:	int cantidad;
+        4:   69:	cin>>cantidad;
+        4:   70:	return cantidad;
+        9:   71:}

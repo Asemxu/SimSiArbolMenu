@@ -8,21 +8,22 @@ namespace Espacio_Nodo{
 class Nodo {
 public:
 	string Data;
-	int *costos;
+	int costo;
 	int n_hijos;
-	Nodo ** hijos;
+	Nodo * hijos;
 	Nodo(){
 		
 	}
 	
 	void set_data(string);
-	void setcostos_hijos(int );
-	void set_n_costos_hijos(int); 
-	int get_cantidad_costos_hijos();
-	void mostrar_costos();
-	void set_Hijos();
+	void ingresarcostos_hijos(int );
+	void set_n_hijos(int); 
+	int get_cantidad_hijos();
+	int mostrar_costos();
+	void set_Hijos(Nodo*&,bool,int);
 	void get_Hijos();
 	string get_Data(); 
+	int cuantos_hijos(string);
 	~Nodo();	
 };
 }

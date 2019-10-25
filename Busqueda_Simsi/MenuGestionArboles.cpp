@@ -13,7 +13,7 @@ int PreguntarCantidad();
 void evaluaropcionseleccionada(int);
 void InsertarNodoInicio(Nodo *&);
 Nodo * crearNodo(string);
-void InsertarNodo(Nodo *&);
+void InsertarNodo(Nodo *&,int);
 bool TieneHijos();
 
 Nodo * arbol=NULL;
@@ -38,12 +38,11 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 			cout<<"..::Ingrese Arbol a Insertar::"<<endl;
 			if(arbol==NULL){
 				InsertarNodoInicio(arbol);
-				while(MenuConstantesGestionArboles::TieneHijos()){
-					cout<<"Cantidad de Hijos que tendra el nodo "<<arbol->get_Data();
-					int numero;
-					cin>>numero;
-					//InsertarNodo(arbol);
-				}
+				arbol->set_n_hijos(arbol->cuantos_hijos(arbol->get_Data()));
+				arbol->set_Hijos(arbol,true,arbol->get_cantidad_hijos());
+				break;
+			}else{
+				cout<<"Ya hay un Arbol Porfavor Vacielo para Insertar nuevos nodos"<<endl;
 			}
 			break;
 		}
@@ -51,8 +50,9 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 			cout<<"..::Mostrar Arbol::.."<<endl;
 			if(arbol==NULL)
 				cout<<"El Arbol Esta Vacio porfavor Ingrese Uno "<<endl;
-			else
-				cout<<arbol->get_Data()<<endl;
+			else{
+				arbol->get_Hijos();
+			}
 			break;
 		}
 		case MenuConstantesGestionArboles::busqueda_profundidad_arbol:{
@@ -80,9 +80,7 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 	system("PAUSE");
 	Sleep(2000);
 }
-void InsertarNodo(Nodo *&arbol){
-	//arbol->set_n_costos_hijos(numero);
-}
+
 Nodo * crearNodo(string dato){
 	Nodo * nuevo_nodo = new Nodo();
 	nuevo_nodo->set_data(dato);

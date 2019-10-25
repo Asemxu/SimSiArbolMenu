@@ -15,7 +15,7 @@ tab_width=4
 tab_use_spaces=0
 explorer_path=.
 inherits_from=
-current_source=MenuGestionArboles.cpp
+current_source=Nodo.cpp
 path_char=\
 [source]
 path=main.cpp
@@ -25,14 +25,14 @@ path=Facade.cpp
 cursor=14:1
 [source]
 path=MenuGestionArboles.cpp
-cursor=41:69
+cursor=41:59
 open=true
 [source]
 path=MenuConstantesGestionArboles.cpp
 cursor=14:20
 [source]
 path=Nodo.cpp
-cursor=30:28
+cursor=37:24
 open=true
 [header]
 path=Facade.h
@@ -48,7 +48,7 @@ path=MenuConstantesGestionArboles.h
 cursor=14:1
 [header]
 path=Nodo.h
-cursor=16:1
+cursor=24:20
 open=true
 [config]
 name=Debug
@@ -69,7 +69,7 @@ temp_folder=Debug
 output_file=Debug\Busqueda_Simsi.exe
 icon_file=
 manifest_file=
-compiling_extra=
+compiling_extra=--coverage 
 macros=_DEBUG
 warnings_level=2
 warnings_as_errors=0
@@ -80,7 +80,7 @@ debug_level=2
 optimization_level=0
 enable_lto=0
 headers_dirs=
-linking_extra=
+linking_extra=--coverage 
 libraries_dirs=
 libraries=
 strip_executable=0

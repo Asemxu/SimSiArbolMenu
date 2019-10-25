@@ -5,9 +5,9 @@
 #include <string>
 using namespace std;
 using namespace Espacio_Nodo;
-bool TieneHijos();
 Nodo::~Nodo(){
 } 
+void LLenandoHijos(Nodo &);
 void Nodo::set_data(string dato){
 	this->Data=dato;
 	
@@ -15,36 +15,60 @@ void Nodo::set_data(string dato){
 string Nodo::get_Data(){
 	return this->Data;
 }
-void Nodo::setcostos_hijos(int n){
-	for(int i=0;i<n;i++){
-		cout<<"Ingrese Costo N°"<<i+1<<" : ";
-		cin>>costos[i];
-	}
+void Nodo::ingresarcostos_hijos(int n){
+		cout<<"Ingrese Costo del Nodo °"<<this->Data<<" : ";
+		cin>>costo;
 }
-void Nodo::set_n_costos_hijos(int n_costos_hijos){
-	n_hijos=n_costos_hijos;
-	hijos = new Nodo*[n_hijos];
+void Nodo::set_n_hijos(int cantidad_hijos){
+	n_hijos=cantidad_hijos;
+	hijos = new Nodo[n_hijos];
 }
-int Nodo::get_cantidad_costos_hijos(){
+int Nodo::get_cantidad_hijos(){
 	return this->n_hijos;
 }
-void Nodo::mostrar_costos(){
-	for(int i=0;i<n_hijos;i++){
-		cout<<"Costo :"<<costos[i]<<endl;
-	}
+int Nodo::mostrar_costos(){
+	return this->costo;
 }
-void Nodo::set_Hijos(){
-	for(int i=0;i<n_hijos;i++){
+void Nodo::set_Hijos(Nodo *& arbol,bool isPadre,int cantidad_hijos){
+	
+	
+	
+	for(int i=0;i<cantidad_hijos;i++){
 		string palabra = "";
-		cout<<"Ingrese Nombre del Hijo N° "<<(i+1)<< "Del Nodo "<<Data<<": ";
-		cin>>palabra;
-		hijos[i]->set_data(palabra);
+		for(int j=0;j<cantidad_hijos;j++){
+			if(isPadre){
+				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->get_Data()<<": ";
+			}else{
+				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->hijos[i].get_Data()<<": ";
+			}
+			cin>>palabra
+			arbol->hijos[j].set_data(palabra);
+		}
+		for(int k=0;k<cantidad_hijos;k++){
+			int n=arbol->hijos[k].cuantos_hijos(arbol->hijos[k].get_Data());
+			if(n==0){
+				i++;
+			}else{
+				arbol->hijos[k].set_Hijos(arbol,false,n);
+				
+			}
+		}
 	}
+	
+	//LLenandoHijos(arbol->hijos[i]);
+}
+void LLenandoHijos(Nodo & hijo){
+	
 }
 void Nodo::get_Hijos(){
 	cout<<"Nodo "<<this->Data<<endl;
 	for(int i=0;i<n_hijos;i++){
-		cout<<"Hijo  "<<hijos[i]->get_Data()<<endl;
+		
 	}
 }
-
+int Nodo::cuantos_hijos(string nombre_nodo){
+	cout<<"Cuantos hijos tiene el nodo "<<nombre_nodo<<": ";
+	int cantidad;
+	cin>>cantidad;
+	return cantidad;
+}

@@ -1,0 +1,36 @@
+        -:    0:Source:C:/Users/hijo7/projects/Busqueda/Busqueda_Simsi/Nodo.h
+        -:    0:Graph:Nodo.gcno
+        -:    0:Data:Nodo.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#ifndef NODO_H
+        -:    2:#define NODO_H
+        -:    3:#include <string>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+        -:    7:namespace Espacio_Nodo{
+        -:    8:class Nodo {
+        -:    9:public:
+        -:   10:	string Data;
+        -:   11:	int costo;
+        -:   12:	int n_hijos;
+        -:   13:	Nodo * hijos;
+    #####:   14:	Nodo(){
+        -:   15:		
+    #####:   16:	}
+        -:   17:	
+        -:   18:	void set_data(string);
+        -:   19:	void ingresarcostos_hijos(int );
+        -:   20:	void set_n_hijos(int); 
+        -:   21:	int get_cantidad_hijos();
+        -:   22:	int mostrar_costos();
+        -:   23:	void set_Hijos(Nodo*&);
+        -:   24:	void get_Hijos();
+        -:   25:	string get_Data(); 
+        -:   26:	int cuantos_hijos(string);
+        -:   27:	~Nodo();	
+        -:   28:};
+        -:   29:}
+        -:   30:#endif
+        -:   31:
