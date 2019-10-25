@@ -5,69 +5,76 @@
 #include <string>
 using namespace std;
 using namespace Espacio_Nodo;
-Nodo::~Nodo(){
-} 
-void LLenandoHijos(Nodo &,int,int);
-void mostrarHijosdehijos(Nodo&);
-void Nodo::set_data(string dato){
-	this->Data=dato;
+
+Nodo * crearNodo(char*,int,int);
+void Nodo::set_nombre_nodo(char * nombre){
+	this->nombre_nodo=nombre;
 	
 }
-string Nodo::get_Data(){
-	return this->Data;
+char * Nodo::get_nombre(){
+	return this->nombre_nodo;
 }
-void Nodo::ingresarcostos_hijos(int n){
-		cout<<"Ingrese Costo del Nodo °"<<this->Data<<" : ";
-		cin>>costo;
-}
+
 void Nodo::set_n_hijos(int cantidad_hijos){
 	n_hijos=cantidad_hijos;
-	hijos = new Nodo[n_hijos];
 }
+void Nodo::set_costo(int costo_nodo){
+	costo=costo_nodo;
+}
+
 int Nodo::get_cantidad_hijos(){
 	return this->n_hijos;
 }
-int Nodo::mostrar_costos(){
+int Nodo::mostrar_costo(){
 	return this->costo;
 }
-void Nodo::set_Hijos(Nodo *& arbol,int cantidad_hijos){
-	
-	
-	
-		string palabra = "";
-		for(int j=0;j<cantidad_hijos;j++){
-				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->get_Data()<<": ";
-			cin>>palabra;
-			arbol->hijos[j].set_data(palabra);
-		}
-		for(int k=0;k<cantidad_hijos;k++){
-			int n=arbol->hijos[k].cuantos_hijos(arbol->hijos[k].get_Data());
-			if(n!=0)
-				LLenandoHijos(arbol->hijos[k],n,0);
-			else
-				arbol->hijos[k].set_n_hijos(0);
-		}
-}
-	
+
 	//LLenandoHijos(arbol->hijos[i]);
-void LLenandoHijos(Nodo & hijo,int cantidad,int nivel){
-	
-}
-void Nodo::get_Hijos(){
-	cout<<"Nodo "<<this->Data<<endl;
-	for(int i=0;i<n_hijos;i++){
-		cout<<"Nodo : "<<this->hijos[i].get_Data()<<endl;
-		if(this->hijos[i].get_cantidad_hijos()>0){
-			get_hijosdehijos(this->hijos[i]);
-		}
-	}
-}
-void Nodo::get_hijosdehijos(Nodo & hijo){
-	
-}
-int Nodo::cuantos_hijos(string nombre_nodo){
-	cout<<"Cuantos hijos tiene el nodo "<<nombre_nodo<<": ";
+
+int Nodo::cuantos_hijos(char *nombre){
+	cout<<"Cuantos hijos tiene el nodo "<<nombre<<": ";
 	int cantidad;
 	cin>>cantidad;
 	return cantidad;
 }
+void Nodo::InsertarNodo(Nodo *&arbol,int cantidad,bool isPadre)
+{
+	char * nombre= new char[20];
+	int costo;
+	if(cantidad!=0){
+		cout<<"Ingrese nombre del Nodo: ";
+		cin>>nombre;
+		if(isPadre)
+			costo=0;
+		else{
+			cout<<"Ingrese costo del Nodo "<<nombre<<" : ";
+			cin>>costo;
+		}
+		int cantidad_hijos=arbol->cuantos_hijos(nombre);
+		if(arbol==NULL){
+			Nodo * nuevo_nodo =crearNodo(nombre,costo,cantidad);
+			arbol = nuevo_nodo;
+			InsertarNodo(arbol,cantidad_hijos,false);
+		}else{
+			if(cantidad!=0){
+				char * nombre_nuevo_nodo = arbol->get_nombre();
+				if(strcmp(nombre,nombre_nuevo_nodo)>0)
+					InsertarNodo(arbol->Inicial,cantidad_hijos-1,false);
+				else
+					InsertarNodo(arbol->hijo,cantidad_hijos-1,false);
+			}else
+			   return;
+		}
+	}
+}
+	
+ Nodo * crearNodo(char* nombre,int costo_nodo,int cantidad){
+	Nodo * nuevo_nodo = new Nodo();
+	nuevo_nodo->set_nombre_nodo(nombre);
+	nuevo_nodo->set_costo(costo_nodo);
+	nuevo_nodo->Inicial=NULL;
+	nuevo_nodo->set_n_hijos(cantidad);
+	nuevo_nodo->hijo=NULL;
+	return nuevo_nodo;
+}
+

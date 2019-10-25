@@ -7,25 +7,24 @@ using namespace std;
 namespace Espacio_Nodo{
 class Nodo {
 public:
-	string Data;
+	char * nombre_nodo;
 	int costo;
 	int n_hijos;
-	Nodo * hijos;
+	Nodo * Inicial;
+	Nodo * hijo;
 	Nodo(){
 		
 	}
 	
-	void set_data(string);
-	void ingresarcostos_hijos(int );
+	void set_nombre_nodo(char*);
 	void set_n_hijos(int); 
+	void set_costo(int);
 	int get_cantidad_hijos();
-	int mostrar_costos();
-	void set_Hijos(Nodo*&,int);
-	void get_Hijos();
-	void get_hijosdehijos(Nodo &);
-	string get_Data(); 
-	int cuantos_hijos(string);
-	~Nodo();	
+	int mostrar_costo();
+	char * get_nombre(); 
+	void InsertarNodo(Nodo *&,int,bool);
+
+	int cuantos_hijos(char*);
 };
 }
 #endif

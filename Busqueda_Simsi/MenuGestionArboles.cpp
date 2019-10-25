@@ -37,21 +37,19 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 		case MenuConstantesGestionArboles::insertar_arbol:{
 			cout<<"..::Ingrese Arbol a Insertar::"<<endl;
 			if(arbol==NULL){
-				InsertarNodoInicio(arbol);
-				arbol->set_n_hijos(arbol->cuantos_hijos(arbol->get_Data()));
-				arbol->set_Hijos(arbol,arbol->get_cantidad_hijos());
-				break;
+				arbol->InsertarNodo(arbol,1,true);
+				cout<<"Termino de Insertar"<<endl;
 			}else{
-				cout<<"Ya hay un Arbol Porfavor Vacielo para Insertar nuevos nodos"<<endl;
+				cout<<"Vacie el Arbol para volver a Ingresar"<<endl;
 			}
-			break;
+				break;
 		}
 		case MenuConstantesGestionArboles::mostrar_arbol:{
 			cout<<"..::Mostrar Arbol::.."<<endl;
 			if(arbol==NULL)
 				cout<<"El Arbol Esta Vacio porfavor Ingrese Uno "<<endl;
 			else{
-				arbol->get_Hijos();
+				//arbol->get_Hijos();
 			}
 			break;
 		}
@@ -81,17 +79,5 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 	Sleep(2000);
 }
 
-Nodo * crearNodo(string dato){
-	Nodo * nuevo_nodo = new Nodo();
-	nuevo_nodo->set_data(dato);
-	return nuevo_nodo;
-}
-void InsertarNodoInicio(Nodo  *&){
-	cout<<"Ingrese nombre del Nodo Inicial: ";
-	string nombre;
-	cin>>nombre;
-	Nodo * nuevo_nodo =crearNodo(nombre);
-	arbol = nuevo_nodo;
-}
 
 
