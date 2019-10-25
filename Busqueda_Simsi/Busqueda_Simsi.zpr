@@ -25,14 +25,14 @@ path=Facade.cpp
 cursor=14:1
 [source]
 path=MenuGestionArboles.cpp
-cursor=41:59
+cursor=43:9
 open=true
 [source]
 path=MenuConstantesGestionArboles.cpp
 cursor=14:20
 [source]
 path=Nodo.cpp
-cursor=37:24
+cursor=9:33
 open=true
 [header]
 path=Facade.h
@@ -48,7 +48,7 @@ path=MenuConstantesGestionArboles.h
 cursor=14:1
 [header]
 path=Nodo.h
-cursor=24:20
+cursor=24:29
 open=true
 [config]
 name=Debug

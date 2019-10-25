@@ -20,8 +20,9 @@ public:
 	void set_n_hijos(int); 
 	int get_cantidad_hijos();
 	int mostrar_costos();
-	void set_Hijos(Nodo*&,bool,int);
+	void set_Hijos(Nodo*&,int);
 	void get_Hijos();
+	void get_hijosdehijos(Nodo &);
 	string get_Data(); 
 	int cuantos_hijos(string);
 	~Nodo();	

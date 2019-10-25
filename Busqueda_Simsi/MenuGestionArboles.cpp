@@ -39,7 +39,7 @@ void evaluaropcionseleccionada(int opcionseleccionada){
 			if(arbol==NULL){
 				InsertarNodoInicio(arbol);
 				arbol->set_n_hijos(arbol->cuantos_hijos(arbol->get_Data()));
-				arbol->set_Hijos(arbol,true,arbol->get_cantidad_hijos());
+				arbol->set_Hijos(arbol,arbol->get_cantidad_hijos());
 				break;
 			}else{
 				cout<<"Ya hay un Arbol Porfavor Vacielo para Insertar nuevos nodos"<<endl;

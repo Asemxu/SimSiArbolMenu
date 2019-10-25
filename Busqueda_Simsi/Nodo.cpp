@@ -7,7 +7,8 @@ using namespace std;
 using namespace Espacio_Nodo;
 Nodo::~Nodo(){
 } 
-void LLenandoHijos(Nodo &);
+void LLenandoHijos(Nodo &,int,int);
+void mostrarHijosdehijos(Nodo&);
 void Nodo::set_data(string dato){
 	this->Data=dato;
 	
@@ -29,42 +30,40 @@ int Nodo::get_cantidad_hijos(){
 int Nodo::mostrar_costos(){
 	return this->costo;
 }
-void Nodo::set_Hijos(Nodo *& arbol,bool isPadre,int cantidad_hijos){
+void Nodo::set_Hijos(Nodo *& arbol,int cantidad_hijos){
 	
 	
 	
-	for(int i=0;i<cantidad_hijos;i++){
 		string palabra = "";
 		for(int j=0;j<cantidad_hijos;j++){
-			if(isPadre){
 				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->get_Data()<<": ";
-			}else{
-				cout<<"Ingrese Nombre del Hijo N° "<<(j+1)<< "Del Nodo "<<arbol->hijos[i].get_Data()<<": ";
-			}
-			cin>>palabra
+			cin>>palabra;
 			arbol->hijos[j].set_data(palabra);
 		}
 		for(int k=0;k<cantidad_hijos;k++){
 			int n=arbol->hijos[k].cuantos_hijos(arbol->hijos[k].get_Data());
-			if(n==0){
-				i++;
-			}else{
-				arbol->hijos[k].set_Hijos(arbol,false,n);
-				
-			}
+			if(n!=0)
+				LLenandoHijos(arbol->hijos[k],n,0);
+			else
+				arbol->hijos[k].set_n_hijos(0);
 		}
-	}
+}
 	
 	//LLenandoHijos(arbol->hijos[i]);
-}
-void LLenandoHijos(Nodo & hijo){
+void LLenandoHijos(Nodo & hijo,int cantidad,int nivel){
 	
 }
 void Nodo::get_Hijos(){
 	cout<<"Nodo "<<this->Data<<endl;
 	for(int i=0;i<n_hijos;i++){
-		
+		cout<<"Nodo : "<<this->hijos[i].get_Data()<<endl;
+		if(this->hijos[i].get_cantidad_hijos()>0){
+			get_hijosdehijos(this->hijos[i]);
+		}
 	}
+}
+void Nodo::get_hijosdehijos(Nodo & hijo){
+	
 }
 int Nodo::cuantos_hijos(string nombre_nodo){
 	cout<<"Cuantos hijos tiene el nodo "<<nombre_nodo<<": ";
